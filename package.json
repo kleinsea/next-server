@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "server": "nodemon server/server.js"
+  },
+  "dependencies": {
+    "axios": "^0.19.2",
+    "koa": "^2.13.0",
+    "koa-router": "^9.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
