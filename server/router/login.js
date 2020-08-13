@@ -33,7 +33,7 @@ route.get("/api/facebook/userInfoBySDK", async(ctx, next) => {
   try {
     const response = await axios.get(`https://graph.facebook.com/${ctx.query.user_id}`, {
       params: {
-        fields: "id,name",
+        fields: "id,name,picture",
         access_token: ctx.query.access_token
       }
     })
