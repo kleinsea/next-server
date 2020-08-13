@@ -1,6 +1,7 @@
 const Koa = require("koa");
 const server = new Koa();
 const router = require("./router");
+const login = require("./router.login");
 const { logger, accessLogger } = require('./log/config');
 const cors = require('@koa/cors');
 server.use(accessLogger());
@@ -24,6 +25,7 @@ server.use(async (ctx, next) => {
 })
 
 server.use(router.routes())
+server.use(login.routes())
 server.listen("8888",()=> {
   console.log('Running on port 8888');
 })
