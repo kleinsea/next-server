@@ -58,4 +58,22 @@ route.get("/mock/500", async (ctx, next) => {
   }
   next()
 });
+route.get("/facebook/userInfo", async(ctx, next) => {
+  try {
+    // ? why https://www.haixiao.online need `/`
+    const response = await axios.get("https://graph.facebook.com/v8.0/oauth/access_token", {
+      client_id: "320868815625915",
+      redirect_uri: "https://www.haixiao.online/",
+      client_secret: "d3cbe95cdb62eed889d52f706da07862",
+      code: ctx.query.code
+    })
+    ctx.body = response.data
+    console.log(response)
+  } catch (error) {
+    console.log(err)
+    ctx.status = 500
+    ctx.body = error
+  }
+  next()
+})
 module.exports = route;
