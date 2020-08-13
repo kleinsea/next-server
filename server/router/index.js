@@ -83,4 +83,21 @@ route.get("/facebook/userInfo", async(ctx, next) => {
   }
   next()
 })
+
+route.get("/facebook/userInfoBySDK", async(ctx, next) => {
+  try {
+    const response = await axios.get(`https://graph.facebook.com/${ctx.query.user_id}`, {
+      params: {
+        fields: "id,name",
+        access_token: ctx.query.access_token
+      }
+    })
+    ctx.body = response.data
+  } catch (error) {
+    logger.error(error)
+    ctx.status = 500
+    ctx.body = (error.response || {}).data
+  }
+  next()
+})
 module.exports = route;
