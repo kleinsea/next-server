@@ -70,7 +70,8 @@ route.get("/facebook/userInfo", async(ctx, next) => {
         code: ctx.query.code
       }
     })
-    ctx.body = response
+    ctx.body = response.data
+    logger.error("success")
     logger.error(response)
   } catch (error) {
     logger.error(error)
