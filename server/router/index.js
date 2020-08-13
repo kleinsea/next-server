@@ -69,13 +69,13 @@ route.get("/facebook/userInfo", async(ctx, next) => {
       code: ctx.query.code
     })
     ctx.body = response.data
-    logger.log(response)
+    logger.log(response.data)
     console.log(response)
   } catch (error) {
-    console.log(error)
-    logger.error(error)
+    console.log(error.data)
+    logger.error(error.data)
     ctx.status = 500
-    ctx.body = error
+    ctx.body = error.data
   }
   next()
 })
