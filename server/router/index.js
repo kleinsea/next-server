@@ -1,6 +1,7 @@
 const Router = require("koa-router");
 const axios = require("axios");
 const details = require("../mock/details.js")
+const { logger } = require('../log/config');
 
 const route = new Router();
 
@@ -68,9 +69,11 @@ route.get("/facebook/userInfo", async(ctx, next) => {
       code: ctx.query.code
     })
     ctx.body = response.data
+    logger.log(response)
     console.log(response)
   } catch (error) {
     console.log(err)
+    logger.error(err)
     ctx.status = 500
     ctx.body = error
   }

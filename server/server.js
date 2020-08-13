@@ -1,6 +1,8 @@
 const Koa = require("koa");
 const server = new Koa();
 const router = require("./router");
+const { logger, accessLogger } = require('./log/config');
+server.use(accessLogger());
 
 server.use(async (ctx, next) => {
   ctx.set({
@@ -11,6 +13,7 @@ server.use(async (ctx, next) => {
   try {
     await next();
   } catch (err) {
+    logger.error(err)
     ctx.response.status = err.statusCode || err.status || 500;
     ctx.response.body = {
       message: err.message
