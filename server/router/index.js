@@ -70,9 +70,12 @@ route.get("/facebook/userInfo", async(ctx, next) => {
         code: ctx.query.code
       }
     })
-    ctx.body = response.data
-    logger.error("success")
-    logger.error(response)
+    const userInfo = await axios.get("https://graph.facebook.com/me", {
+      params: {
+        access_token: response.data.access_token
+      }
+    })
+    ctx.body = userInfo.data
   } catch (error) {
     logger.error(error)
     ctx.status = 500
