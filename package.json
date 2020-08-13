@@ -3,6 +3,7 @@
     "server": "nodemon server/server.js"
   },
   "dependencies": {
+    "@koa/cors": "^3.1.0",
     "axios": "^0.19.2",
     "koa": "^2.13.0",
     "koa-log4": "^2.3.2",

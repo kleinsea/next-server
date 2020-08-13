@@ -2,7 +2,9 @@ const Koa = require("koa");
 const server = new Koa();
 const router = require("./router");
 const { logger, accessLogger } = require('./log/config');
+const cors = require('@koa/cors');
 server.use(accessLogger());
+server.use(cors());
 
 server.use(async (ctx, next) => {
   ctx.set({
