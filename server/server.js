@@ -1,7 +1,7 @@
 const Koa = require("koa");
 const server = new Koa();
 const router = require("./router");
-const login = require("./router.login");
+const login = require("./router/login");
 const { logger, accessLogger } = require('./log/config');
 const cors = require('@koa/cors');
 server.use(accessLogger());
