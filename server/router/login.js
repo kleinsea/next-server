@@ -4,7 +4,7 @@ const { logger } = require('../log/config');
 
 const route = new Router();
 
-route.get("/facebook/userInfo", async(ctx, next) => {
+route.get("/api/facebook/userInfo", async(ctx, next) => {
   try {
     // ? why https://www.haixiao.online need `/`
     const response = await axios.get("https://graph.facebook.com/v8.0/oauth/access_token", {
@@ -29,7 +29,7 @@ route.get("/facebook/userInfo", async(ctx, next) => {
   next()
 })
 
-route.get("/facebook/userInfoBySDK", async(ctx, next) => {
+route.get("/api/facebook/userInfoBySDK", async(ctx, next) => {
   try {
     const response = await axios.get(`https://graph.facebook.com/${ctx.query.user_id}`, {
       params: {
@@ -46,7 +46,7 @@ route.get("/facebook/userInfoBySDK", async(ctx, next) => {
   next()
 })
 
-route.get("/google/userInfoBySDK", async(ctx, next) => {
+route.get("/api/google/userInfoBySDK", async(ctx, next) => {
   try {
     const response = await axios.get("https://www.googleapis.com/oauth2/v3/tokeninfo", {
       params: {
