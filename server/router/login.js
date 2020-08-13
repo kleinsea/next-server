@@ -63,8 +63,8 @@ route.get("/api/google/userInfoBySDK", async(ctx, next) => {
 })
 route.get("/api/line/userInfoBySDK", async(ctx, next) => {
   try {
-    const response = await axios.get("https://api.line.me/v2/profile", {}, {
-      header: {
+    const response = await axios.get("https://api.line.me/v2/profile", {
+      headers: {
         Authorization: `Bearer ${ctx.query.access_token}`
       }
     })
