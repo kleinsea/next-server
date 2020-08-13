@@ -10,7 +10,7 @@ route.get("/api/facebook/userInfo", async(ctx, next) => {
     const response = await axios.get("https://graph.facebook.com/v8.0/oauth/access_token", {
       params: {
         client_id: "320868815625915",
-        redirect_uri: "https://www.haixiao.online/",
+        redirect_uri: "https://www.haixiao.online/line",
         client_secret: "d3cbe95cdb62eed889d52f706da07862",
         code: ctx.query.code
       }
